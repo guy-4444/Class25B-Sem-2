@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.guyi.class25b_sem_2.databinding.ActivityMainBinding;
 import com.guyi.validatorclass.Validator;
+import com.guyi.validatorclass.Watcher;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,18 +21,13 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle("My Validator");
 
-//        ValidatorOld valMail = new ValidatorOld(binding.edtEmail,
-//                new Watcher.Email("invalid email"),
-//                new Watcher.MaxLength("too long", 20));
-
-
-        Validator valMail = Validator.Builder.make(binding.edtEmail)
-                .addWatcher(new Validator.Watcher_Email("invalid email"))
-                .addWatcher(new Validator.Watcher_MaximumOfLetter("too many '-' letters", '-',2))
-                .build();
-
-        Validator valPhone = Validator.Builder.make(binding.edtPhone)
-                .addWatcher(new Validator.Watcher_LessThan("too big", 100))
+        Validator valMail = Validator.Builder
+                .with(binding.edtEmail)
+                .addWatcher(new Watcher.NotBlank("Field cannot be empty"))
+                .addWatcher(new Watcher.Email("Must be a valid email"))        // you already have this
+                .addWatcher(new Watcher.Phone("Must be a valid phone number")) // new!
+                .addWatcher(new Watcher.ExactLength("Must be exactly 10 digits", 10))
+                .addWatcher(new Watcher.LengthRange("Length must be 5–20 chars", 5, 20))
                 .build();
 
     }
