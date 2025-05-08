@@ -37,3 +37,18 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                groupId = "com.github.guy-4444" // Change as needed
+                artifactId = "validator" // Change as needed
+                version = "1.00.04" // Change as needed
+                artifact(tasks.getByName("bundleReleaseAar"))
+
+                // Add dependencies to the Maven publication configuration (api or implementation)
+            }
+        }
+    }
+}
