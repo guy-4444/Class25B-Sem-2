@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Class25B-Sem-2"
 include(":app")
+include(":validator")

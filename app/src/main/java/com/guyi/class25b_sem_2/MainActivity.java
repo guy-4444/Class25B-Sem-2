@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.guyi.class25b_sem_2.databinding.ActivityMainBinding;
+import com.guyi.validatorclass.Validator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setTitle("My Validator");
 
-
 //        ValidatorOld valMail = new ValidatorOld(binding.edtEmail,
 //                new Watcher.Email("invalid email"),
 //                new Watcher.MaxLength("too long", 20));
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         Validator valPhone = Validator.Builder.make(binding.edtPhone)
                 .addWatcher(new Validator.Watcher_LessThan("too big", 100))
                 .build();
-
 
     }
 

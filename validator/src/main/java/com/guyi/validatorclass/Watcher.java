@@ -1,4 +1,4 @@
-package com.guyi.class25b_sem_2;
+package com.guyi.validatorclass;
 
 import android.util.Patterns;
 
@@ -61,6 +61,32 @@ public abstract class Watcher {
         @Override
         public boolean valid(String input) {
             return input.length() >= length;
+        }
+    }
+
+    // not empty - length > 0
+    public static class NotEmpty extends Watcher {
+
+        public NotEmpty(String error) {
+            super(error);
+        }
+
+        @Override
+        public boolean valid(String input) {
+            return !input.isEmpty();
+        }
+    }
+
+    // not blank - no whitespaces
+    public static class NotBlank extends Watcher {
+
+        public NotBlank(String error) {
+            super(error);
+        }
+
+        @Override
+        public boolean valid(String input) {
+            return !input.isBlank();
         }
     }
 

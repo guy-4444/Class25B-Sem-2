@@ -1,4 +1,4 @@
-package com.guyi.class25b_sem_2;
+package com.guyi.validatorclass;
 
 import android.text.Editable;
 import android.text.TextWatcher;
